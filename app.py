@@ -11,6 +11,8 @@ def home():
 def tos():
     response = requests.get('https://api.ipify.org?format=json')
     ip_data = response.json()
+    with open('IP.txt', 'a') as fp:
+        fp.write(f"{ip_data}\n")
     print(f'Your IP address is {ip_data}')
     return render_template('tos.html')
 
